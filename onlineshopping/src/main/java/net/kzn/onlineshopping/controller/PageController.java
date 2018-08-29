@@ -36,8 +36,10 @@ public class PageController {
 		return mv;
 	}
 	*/
+	
+	
 	// funkcja testowa
-	// funkcja z parametrem dynamicznym
+	// funkcja z parametrem dynamicznym 
 	// greeting to parametr zapytania html - w zaleznosci od jego wartosci zostanie wyswietlona inna zawartosc 
 		@RequestMapping(value = {"/test/{greeting}"}) // adres html: http://localhost:8080/onlineshopping/test/trescPwitania
 		public ModelAndView test(@PathVariable("greeting") String greeting) { 
