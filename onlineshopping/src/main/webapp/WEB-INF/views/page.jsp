@@ -26,7 +26,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- zmienna title w pliku PageController.java -->
+<!--  zmienna title w pliku PageController.java  -->
 <title>Online Shopping - ${title}</title>
 
 <script>
@@ -36,6 +36,10 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Readable Theme CSS  -->
+<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
 
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
