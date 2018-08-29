@@ -8,15 +8,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Online Shopping</a>
+				<a class="navbar-brand" href="${contextRoot}/home">Online Shopping</a> <!-- po kliknieciu na Online shopping w pasku nawigacji przeniesie na adres onlineshopping/home - wtedy PageController zaladuje odpowiednia zawartosc strony poprzez zmienna pomocnicza userClickHome -->
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">About</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="${contextRoot}/about">About</a></li> <!-- po kliknieciu na Online shopping w pasku nawigacji przeniesie na adres onlineshopping/about - wtedy PageController zaladuje odpowiednia zawartosc strony poprzez zmienna pomocnicza -->
+					<li><a href="${contextRoot}/listProducts">View Products</a></li>
+					<li><a href="${contextRoot}/contact">Contact</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
