@@ -51,8 +51,12 @@
 
 <body>
 
+	<div class="wrapper">
+
 	<!-- Navigation - w tym miejscu jest wstawiony kod z pliku navbar.jsp -->
 	<%@include file="./shared/navbar.jsp"%>
+
+	<div class="content">
 
 
 	<!-- Page Content -->
@@ -76,6 +80,7 @@
 		<%@include file="contact.jsp"%>
 	</c:if>
 	
+	</div>
 
 	<!-- Footer - w tym miejscu jest wstawiony kod z pliku footer.jsp -->
 	<%@include file="./shared/footer.jsp"%>
@@ -89,6 +94,8 @@
 
 	<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
 	<script src="${js}/myapp.js"></script>
+
+	</div>
 
 </body>
 
