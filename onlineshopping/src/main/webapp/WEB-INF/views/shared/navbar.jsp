@@ -14,9 +14,15 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="${contextRoot}/about">About</a></li> <!-- po kliknieciu na Online shopping w pasku nawigacji przeniesie na adres onlineshopping/about - wtedy PageController zaladuje odpowiednia zawartosc strony poprzez zmienna pomocnicza -->
-					<li><a href="${contextRoot}/listProducts">View Products</a></li>
-					<li><a href="${contextRoot}/contact">Contact</a></li>
+					<li id="about">
+						<a href="${contextRoot}/about">About</a> <!-- po kliknieciu na Online shopping w pasku nawigacji przeniesie na adres onlineshopping/about - wtedy PageController zaladuje odpowiednia zawartosc strony poprzez zmienna pomocnicza -->
+					</li> 
+					<li id="listProducts">
+						<a href="${contextRoot}/listProducts">View Products</a>
+					</li>
+					<li id="contact">
+						<a href="${contextRoot}/contact">Contact</a>
+					</li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
