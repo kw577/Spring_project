@@ -13,8 +13,9 @@ public class PageController {
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting","Welcome to Spring Web MVC");
-		mv.addObject("title", "Online Shopping");
+		//mv.addObject("greeting","Welcome to Spring Web MVC");
+		mv.addObject("title", "Home");
+		mv.addObject("userClickHome", true);
 		return mv;
 		
 		
@@ -37,7 +38,7 @@ public class PageController {
 	}
 	*/
 	
-	
+	/*
 	// funkcja testowa
 	// funkcja z parametrem dynamicznym 
 	// greeting to parametr zapytania html - w zaleznosci od jego wartosci zostanie wyswietlona inna zawartosc 
@@ -54,7 +55,7 @@ public class PageController {
 			return mv;
 		}
 	
-	
+	*/
 	
 	
 	
