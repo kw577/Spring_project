@@ -16,6 +16,11 @@
 	<context:component-scan
 		base-package="net.kzn.onlineshopping.controller" />
 
+	<!-- Polaczenie z projektem backendu -->
+	<context:component-scan
+		base-package="net.kzn.shoppingbackend.daoimpl" />
+
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

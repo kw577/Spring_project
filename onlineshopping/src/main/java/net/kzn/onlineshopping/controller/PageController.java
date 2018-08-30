@@ -1,12 +1,18 @@
 package net.kzn.onlineshopping.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kzn.shoppingbackend.dao.CategoryDAO;
+
 @Controller
 public class PageController {
+	
+	@Autowired // polaczenie z projektem Backendu - interface CategoryDAO znajduje sie w projekcie shoppingbackend
+	private CategoryDAO categoryDAO;
+	
 
 	// funkcja zwracajaca ModelAndView - zawartosc strony
 	@RequestMapping(value = { "/", "/home", "/index" }) // adres html np: http://localhost:8080/onlineshopping/home
@@ -15,6 +21,11 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("page");
 		// mv.addObject("greeting","Welcome to Spring Web MVC");
 		mv.addObject("title", "Home");
+		
+		mv.addObject("categories", categoryDAO.list());
+		
+		
+		
 		mv.addObject("userClickHome", true);
 		return mv;
 
