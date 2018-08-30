@@ -9,7 +9,7 @@ import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dto.Category;
 
 // adnotacja @Repository nalezy do frameworku Spring
-@Repository("categoryDAO") // polaczenie z projektem frontendu "categoryDAO" odpowiada nazwie obiektu w PageController
+@Repository("categoryDAO") // polaczenie z projektem frontendu "categoryDAO" odpowiada nazwie obiektu w PageController - adnotacja @Autowired
 public class CategoryDAOImpl implements CategoryDAO {
 
 	// stala lista kategorii - do celow testowych
@@ -54,6 +54,19 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> list() {
 		// TODO Auto-generated method stub
 		return categories;
+	}
+
+	@Override
+	public Category get(int id) {
+		
+		// petla forEach
+		for(Category category : categories) {
+			
+			if(category.getId() == id) return category;
+			
+		}
+		
+		return null;
 	}
 
 }
