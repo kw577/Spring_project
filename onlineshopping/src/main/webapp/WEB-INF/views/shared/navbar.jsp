@@ -17,11 +17,11 @@
 					<li id="about">
 						<a href="${contextRoot}/about">About</a> <!-- po kliknieciu na Online shopping w pasku nawigacji przeniesie na adres onlineshopping/about - wtedy PageController zaladuje odpowiednia zawartosc strony poprzez zmienna pomocnicza -->
 					</li> 
-					<li id="listProducts">
-						<a href="${contextRoot}/show/all/products">View Products</a>
-					</li>
 					<li id="contact">
 						<a href="${contextRoot}/contact">Contact</a>
+					</li>
+					<li id="listProducts">
+						<a href="${contextRoot}/show/all/products">View Products</a>
 					</li>
 				</ul>
 			</div>
