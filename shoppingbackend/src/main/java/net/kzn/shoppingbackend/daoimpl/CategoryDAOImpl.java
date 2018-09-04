@@ -3,7 +3,10 @@ package net.kzn.shoppingbackend.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dto.Category;
@@ -12,6 +15,12 @@ import net.kzn.shoppingbackend.dto.Category;
 @Repository("categoryDAO") // polaczenie z projektem frontendu "categoryDAO" odpowiada nazwie obiektu w PageController - adnotacja @Autowired
 public class CategoryDAOImpl implements CategoryDAO {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	
+	
+	
 	// stala lista kategorii - do celow testowych
 	private static List<Category> categories = new ArrayList<>();	
 	
@@ -67,6 +76,25 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 		
 		return null;
+	}
+
+	// dodanie nowej kategorii do bazy danych
+	@Override
+	@Transactional
+	public boolean add(Category category) {
+		
+		try {
+			// nawiazanie polaczenia z baza danych 
+			sessionFactory.getCurrentSession().persist(category);
+			
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+		
 	}
 
 }
