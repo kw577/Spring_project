@@ -1,9 +1,9 @@
 package net.kzn.shoppingbackend.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,13 +13,14 @@ import net.kzn.shoppingbackend.dto.Category;
 
 // adnotacja @Repository nalezy do frameworku Spring
 @Repository("categoryDAO") // polaczenie z projektem frontendu "categoryDAO" odpowiada nazwie obiektu w PageController - adnotacja @Autowired
+@Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	
-	
+	/*
 	
 	// stala lista kategorii - do celow testowych
 	private static List<Category> categories = new ArrayList<>();	
@@ -57,30 +58,32 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 	
 	//////////////// stala lista kategorii - test 
+	*/
 	
-	
+	// zwraca liste aktywnych kategorii
 	@Override
 	public List<Category> list() {
-		// TODO Auto-generated method stub
-		return categories;
+		
+		// w hibernate jako nazwy tabeli uzywa sie nazwy klasy
+		String selectActiveCategory = "FROM Category WHERE active = :active";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		query.setParameter("active", true);
+		
+		return query.getResultList();
 	}
 
+	
+	// metoda pobiera z bazy danych kategorie o okreslonym id
 	@Override
 	public Category get(int id) {
 		
-		// petla forEach
-		for(Category category : categories) {
-			
-			if(category.getId() == id) return category;
-			
-		}
 		
-		return null;
+		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
 	// dodanie nowej kategorii do bazy danych
 	@Override
-	@Transactional
 	public boolean add(Category category) {
 		
 		try {
@@ -95,6 +98,39 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 
 		
+	}
+
+	// metoda sluzy do updatowania kategorii w bazie danych
+	@Override
+	public boolean update(Category category) {
+		try {
+		
+			sessionFactory.getCurrentSession().update(category);
+			
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delete(Category category) {
+		
+		category.setActive(false); // kategoria nie jest tak wlasciewie usuwana tylko jej status jest ustawiany na nieaktywna
+		
+		// po zmianie statusu wybranej kategorii nastepuje jej update 
+		try {
+			
+			sessionFactory.getCurrentSession().update(category);
+			
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }

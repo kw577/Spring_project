@@ -16,9 +16,9 @@
 	<context:component-scan
 		base-package="net.kzn.onlineshopping.controller" />
 
-	<!-- Polaczenie z projektem backendu -->
+	<!-- Polaczenie z projektem backendu - skanowaie calego projektu-->
 	<context:component-scan
-		base-package="net.kzn.shoppingbackend.daoimpl" />
+		base-package="net.kzn.shoppingbackend" />
 
 
 	<bean id="viewResolver"
