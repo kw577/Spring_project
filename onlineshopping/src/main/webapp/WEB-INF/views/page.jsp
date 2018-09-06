@@ -57,53 +57,57 @@
 
 	<div class="wrapper">
 
-	<!-- Navigation - w tym miejscu jest wstawiony kod z pliku navbar.jsp -->
-	<%@include file="./shared/navbar.jsp"%>
+		<!-- Navigation - w tym miejscu jest wstawiony kod z pliku navbar.jsp -->
+		<%@include file="./shared/navbar.jsp"%>
 
-	<div class="content">
+		<div class="content">
 
 
-	<!-- Page Content -->
-	<c:if test="${userClickHome == true }"> <!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie link do strony startowej -->
-		<!-- userClickHome - zmienna w klasie PageController.java -->
-		<%@include file="home.jsp"%>
-	</c:if>
-	
-	
-	
-	
-	
-	<c:if test="${userClickAbout == true }"> <!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie "Aboout Us" na pasku nawigacji -->
-		<!-- userClickAbout - zmienna w klasie PageController.java -->
-		<%@include file="about.jsp"%>
-	</c:if>
-	
-	
-	<c:if test="${userClickContact == true }"> <!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie "Contact" na pasku nawigacji -->
-		<!-- userClickContact - zmienna w klasie PageController.java -->
-		<%@include file="contact.jsp"%>
-	</c:if>
-	
-	<!-- Load only when user clicks display products button -->
-	<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}"> 
-		<%@include file="listProducts.jsp"%>
-	</c:if>
-	
-	
-	</div>
+			<!-- Page Content -->
+			<c:if test="${userClickHome == true }">
+				<!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie link do strony startowej -->
+				<!-- userClickHome - zmienna w klasie PageController.java -->
+				<%@include file="home.jsp"%>
+			</c:if>
 
-	<!-- Footer - w tym miejscu jest wstawiony kod z pliku footer.jsp -->
-	<%@include file="./shared/footer.jsp"%>
 
-	<!-- Korzysta ze zmiennych utworzonych np w  <spring:url var="js" value="/resources/js"/>  -->
-	<!-- jQuery -->
-	<script src="${js}/jquery.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="${js}/bootstrap.min.js"></script>
 
-	<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
-	<script src="${js}/myapp.js"></script>
+
+			<c:if test="${userClickAbout == true }">
+				<!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie "Aboout Us" na pasku nawigacji -->
+				<!-- userClickAbout - zmienna w klasie PageController.java -->
+				<%@include file="about.jsp"%>
+			</c:if>
+
+
+			<c:if test="${userClickContact == true }">
+				<!--  c: - funkcja z biblioteki jstl   - ta zawartosc strony jest ladowana gdy uzytkownik kliknie "Contact" na pasku nawigacji -->
+				<!-- userClickContact - zmienna w klasie PageController.java -->
+				<%@include file="contact.jsp"%>
+			</c:if>
+
+			<!-- Load only when user clicks display products button -->
+			<c:if
+				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+				<%@include file="listProducts.jsp"%>
+			</c:if>
+
+
+		</div>
+
+		<!-- Footer - w tym miejscu jest wstawiony kod z pliku footer.jsp -->
+		<%@include file="./shared/footer.jsp"%>
+
+		<!-- Korzysta ze zmiennych utworzonych np w  <spring:url var="js" value="/resources/js"/>  -->
+		<!-- jQuery -->
+		<script src="${js}/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="${js}/bootstrap.min.js"></script>
+
+		<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
+		<script src="${js}/myapp.js"></script>
 
 	</div>
 

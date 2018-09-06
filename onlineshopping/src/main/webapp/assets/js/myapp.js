@@ -14,6 +14,7 @@ $(function() {
 			$('#listProducts').addClass('active'); // #listProducts to id przycisku zdefiniowanego w navbar.jsp
 			break;	
 		default:
+			if(menu == "Home") break;
 			$('#listProducts').addClass('active'); 
 			$('#a_'+menu).addClass('active'); // '#a_'+menu to id przycisku zdefiniowanego w side.jsp
 			break;	
