@@ -73,7 +73,7 @@ public class ProductTestCase {
 	public void testListActiveProductsByCategory() {
 		// W tym momencie w bazie danych sa 3 aktywne rekordy dla kategorii 3
 		assertEquals("Something went wrong while fetching the list of products!",3,productDAO.listActiveProductsByCategory(3).size());		
-		// W tym momencie w bazie danych sa 2 aktywne rekordy dla kategorii 1
+		// W tym momencie w bazie danych sa 2 aktywne rekordy dla kategorii 1 
 		assertEquals("Something went wrong while fetching the list of products!",2,productDAO.listActiveProductsByCategory(1).size());		
 		// komunikat "Something went wrong while fetching..." zostanie wyswietlony gry metoda productDAO.listActiveProductsByCategory(1) zwroci wartosc 2 - jesli w kategorii nr 1 sa 2 produkty 
 	}
