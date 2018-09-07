@@ -106,6 +106,9 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
 
+		<!-- DataTable Plugin - jQuery - tabela do wyswietlania produktow -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
 		<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
 		<script src="${js}/myapp.js"></script>
 
