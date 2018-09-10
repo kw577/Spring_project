@@ -40,6 +40,8 @@
 <!-- Bootstrap Readable Theme CSS  -->
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
 
+<!-- Bootstrap DataTable CSS - wazna jest kolejnosc linkowania tyh plikow css  -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -107,6 +109,9 @@
 		<script src="${js}/bootstrap.min.js"></script>
 
 		<!-- DataTable Plugin - jQuery - tabela do wyswietlania produktow -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!-- DataTable Bootstrap Script - jQuery - tabela do wyswietlania produktow - wazna jest kolejnosc linkowania tych plikow .js-->
 		<script src="${js}/jquery.dataTables.js"></script>
 
 		<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
