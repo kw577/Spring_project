@@ -21,6 +21,11 @@
 					
 					<!-- Wyswietla ta zawartosc jesli uzytkownik kliknie "All Products" -->
 					<c:if test="${userClickAllProducts == true }">
+						
+						<script>
+							window.categoryId = '';
+						</script>
+						
 						<ol class="breadcrumb"> 
 					
 							<li><a href="${contextRoot}/home">Home</a></li>
@@ -28,9 +33,12 @@
 					
 						</ol>
 					</c:if>
-					
+					<!-- window.nazwaZmiennej  -  oznacza zmienne globalne - window to obiekt przechowujacy zmienne globalne -->
 					<!-- Wyswietla ta zawartosc jesli uzytkownik wybierz okreslona kategorie  -->
 					<c:if test="${userClickCategoryProducts == true }">
+						<script>
+							window.categoryId = '${category.id}';
+						</script>
 						<ol class="breadcrumb"> <!-- Wyswietla w formacie np.:   Home/Category/Television   (Home jest linkiem do strony glownej) -->
 					
 							<li><a href="${contextRoot}/home">Home</a></li>
@@ -56,13 +64,31 @@
 						<thead>
 						
 							<tr>
-								
-								<th>ID</th>
+								<th></th> <!-- ta kolumna przechowuje zdjecie -->
 								<th>Name</th>
+								<th>Brand</th>
+								<th>Price</th>
+								<th>Qty. Available</th>
+								<th></th> <!-- ta kolumna przechowuje przyciski akcji podgladu produktu i dodania go do koszyka -->
 							
 							</tr>
 						
 						</thead>
+					
+
+						<tfoot>
+						
+							<tr>
+								<th></th> 
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Price</th>
+								<th>Qty. Available</th>
+								<th></th>
+							
+							</tr>
+						
+						</tfoot>
 					
 					
 					</table>
