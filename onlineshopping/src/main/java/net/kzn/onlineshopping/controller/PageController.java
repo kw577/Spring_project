@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kzn.shoppingbackend.dao.CategoryDAO;
+import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
+import net.kzn.shoppingbackend.dto.Product;
 
 @Controller
 public class PageController {
@@ -15,6 +17,8 @@ public class PageController {
 	@Autowired // polaczenie z projektem Backendu - adnotacja @Repository CategoryDAO znajduje sie w projekcie shoppingbackend - CategoryDAOImpl
 	private CategoryDAO categoryDAO;
 	
+	@Autowired // polaczenie z projektem Backendu - adnotacja @Repository CategoryDAO znajduje sie w projekcie shoppingbackend - CategoryDAOImpl
+	private ProductDAO productDAO;
 
 	// funkcja zwracajaca ModelAndView - zawartosc strony
 	@RequestMapping(value = { "/", "/home", "/index" }) // adres html np: http://localhost:8080/onlineshopping/home
@@ -136,6 +140,32 @@ public class PageController {
 		return mv;
 
 	}
+	
+	/*
+	 * Podglad informacji o pojedynczym produkcie - adresy typu np http://localhost:8080/onlineshopping/show/4/product
+	 */
+	
+	@RequestMapping(value = "/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("page");
+		
+		Product product = productDAO.get(id);
+		
+		// zwieksza liczik wyswietlen wybranego produktu
+		product.setViews(product.getViews() + 1); 
+		productDAO.update(product);
+		//-----------------------
+		
+		
+		mv.addObject("title", product.getName());
+		mv.addObject("product", product);
+		
+		mv.addObject("userClickShowProduct", true); // zmienna pomocnicza wykorzystywana w pliku page.jsp do ustalenia jaa zawartosc strony ma byc wyswietlona
+		
+		return mv;
+	}
+	
+	
 	
 	
 }

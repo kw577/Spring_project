@@ -98,7 +98,11 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 
-
+			<!-- Gry uzytkownik wybierze przycisk podgladu pojedynczego produktu - informacja ta jest przekazywana w PageController.java poprzezz zmienna userClickShowProduct -->
+			<c:if
+				test="${userClickShowProduct == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 		</div>
 
 		<!-- Footer - w tym miejscu jest wstawiony kod z pliku footer.jsp -->
