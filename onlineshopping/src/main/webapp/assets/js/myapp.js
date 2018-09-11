@@ -23,9 +23,9 @@ $(function() {
 		
 	// ten skrypt jest uruchamiany w page.jsp - ktory zawiera odniesienia do plikow navbar.jsp, sidebar.jsp - a w tych plikach jes zdefiniowany elementy o id #about, #contact itd.
 	
-	
-	
-	
+	// !!!!!!!!!!!!!!!!!!!!!!!
+	// nalezy czasami wyczyscic historie przegladarki internetowej bo pliki moga byc przechowywane w pamieci cache przegladdarki
+	// !!!!!!!!!!!!!!!!!!!!!!!
 	
 	
 	// code for JQuery dataTable  - tabela do wyswietlania listy produktow
@@ -60,6 +60,9 @@ $(function() {
 		else { // uzytkownik wybral kategorie dla ktorej chce wyswietlic wszystkie produkty
 			jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
 		}
+		
+		
+		
 		// formatowanie tablei wyswietlajacej produkty
 		$table.DataTable( { // zmienna zdefiniowana w jquery.dataTables.js
 			// ustawienie parametrow tabeli
@@ -72,16 +75,16 @@ $(function() {
 			},
 			columns: [
 						{
-				        	  data: 'code',
-				        	  bSortable: false,
-				        	  mRender: function(data, type, row) {
-				        		  
-				        		  return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="dataTableImg"/>'; // class="dataTableImg" i dzieki tej klasie w pliku myapp.css - ustawia sie odpowiednia wielkosc zdjecia
-				        		  
-				        	  }
-				        },
+			        	  data: 'code',
+			        	  bSortable: false,
+			        	  mRender: function(data, type, row) {
+			        		  
+			        		  return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="dataTableImg"/>';
+			        		  
+			        	}
+		          		},
 						{
-							data: 'name' // odpowiada nazwie atrybutu klasy Product
+							data: 'name' // odpowiada nazwie atrybutow w zwracanym pliku json (bedzie wiec rowniez odpowiadac nazwie atrybutow klasy Product)
 						},
 						{
 							data: 'brand'
@@ -89,7 +92,7 @@ $(function() {
 						{
 							data: 'unitPrice',
 							mRender: function(data, type, row) {
-				        		  return '&#8364; ' + data //'&#8377; ' HTML ENTITY CODE  - generuje nietypowy znak - symbol waluty
+				        		  return '&#8364; ' + data //'&#8364; ' HTML ENTITY CODE  - generuje nietypowy znak - symbol waluty
 				        	}
 						},
 						{
@@ -119,7 +122,9 @@ $(function() {
 		
 	}
 	
-	
+	// !!!!!!!!!!!!!!!!!!!!!!!
+	// nalezy czasami wyczyscic historie przegladarki internetowej bo pliki moga byc przechowywane w pamieci cache przegladdarki
+	// !!!!!!!!!!!!!!!!!!!!!!!
 	
 	
 });

@@ -65,7 +65,7 @@
 						
 							<tr>
 								<th></th> <!-- ta kolumna przechowuje zdjecie -->
-								<th>Name</th>
+								<th>Named</th>
 								<th>Brand</th>
 								<th>Price</th>
 								<th>Qty. Available</th>
