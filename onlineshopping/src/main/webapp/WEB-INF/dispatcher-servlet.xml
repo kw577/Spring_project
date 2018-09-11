@@ -13,12 +13,11 @@
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
     ">
 
-	<context:component-scan
-		base-package="net.kzn.onlineshopping.controller" />
+	<!-- Skanowaie calego projektu-->
+	<context:component-scan base-package="net.kzn.onlineshopping" />
 
 	<!-- Polaczenie z projektem backendu - skanowaie calego projektu-->
-	<context:component-scan
-		base-package="net.kzn.shoppingbackend" />
+	<context:component-scan base-package="net.kzn.shoppingbackend" />
 
 
 	<bean id="viewResolver"
