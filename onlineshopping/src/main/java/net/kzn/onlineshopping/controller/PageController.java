@@ -1,5 +1,7 @@
 package net.kzn.onlineshopping.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,9 @@ import net.kzn.shoppingbackend.dto.Product;
 
 @Controller
 public class PageController {
+	
+	// do drukowania logow w konsoli
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	@Autowired // polaczenie z projektem Backendu - adnotacja @Repository CategoryDAO znajduje sie w projekcie shoppingbackend - CategoryDAOImpl
 	private CategoryDAO categoryDAO;
@@ -28,9 +33,10 @@ public class PageController {
 		// mv.addObject("greeting","Welcome to Spring Web MVC");
 		mv.addObject("title", "Home");
 		
+		logger.info("Inside PageController index method - INFO"); // informacja w konsoli
+		logger.debug("Inside PageController index method - DEBUG");
+		
 		mv.addObject("categories", categoryDAO.list());
-		
-		
 		
 		mv.addObject("userClickHome", true);
 		return mv;
