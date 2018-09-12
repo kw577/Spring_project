@@ -1,7 +1,7 @@
 // podswietlanie aktualnie wybranej funkcji na pasku nawigacji - active menu
 
 $(function() {
-	// solving the active menu problem
+	// solving the active menu problem - aktualnie uruchomiony przycisk na pasku nawigacji jest podswietlony
 	switch(menu) {   // zmienna menu zdefiniowana w page.jsp  - jest jej przypisywana nazwa zmiennej title (title zwracana przez PageController)
 	
 		case 'About Us':
@@ -12,6 +12,9 @@ $(function() {
 			break;
 		case 'All Products':
 			$('#listProducts').addClass('active'); // #listProducts to id przycisku zdefiniowanego w navbar.jsp
+			break;	
+		case 'Manage Products':
+			$('#manageProducts').addClass('active'); // #manageProducts to id przycisku zdefiniowanego w navbar.jsp
 			break;	
 		default:
 			if(menu == "Home") break;

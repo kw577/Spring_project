@@ -103,6 +103,13 @@
 				test="${userClickShowProduct == true}">
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
+			
+			<!-- Jesli wybrano tryb zarzadzania produktami (przycsk Manage Products w pasku nawigacji)- informacja ta jest przekazywana w ManagementController.java poprzezz zmienna userClickManageProducts -->
+			<c:if
+				test="${userClickManageProducts == true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+			
 		</div>
 
 		<!-- Footer - w tym miejscu jest wstawiony kod z pliku footer.jsp -->
