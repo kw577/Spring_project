@@ -40,6 +40,40 @@
 						
 						</div>
 						<div class="form-group">
+							<label class="control-label col-md-4" for="description">Product Description</label>
+							<div class="col-md-8">
+								<textarea name="description" id="description" rows="4" placeholder="Write a desription"  class="form-control"></textarea><!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->			
+							</div>
+						</div>	
+											
+						<div class="form-group">
+							<label class="control-label col-md-4" for="unitPrice">Enter Unit Price:</label>
+							<div class="col-md-8">
+								<input type="number" name="unitPrice" id="unitPrice" placeholder="Unit Price In &#8364;" class="form-control"> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-md-4" for="quantity">Quantity Available:</label>
+							<div class="col-md-8">
+								<input type="number" name="quantity" id="quantity" placeholder="Quantity available" class="form-control"> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-md-4" for="categoryId">Select Category:</label>
+							<div class="col-md-8">
+								<select class="form-control" id="categoryId" name="categoryId">
+									<option value="1">Category One</option>
+									<option value="2">Category Two</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						
+						
+						<div class="form-group">
 						
 
 							<div class="col-md-offset-4 col-md-8">
