@@ -89,6 +89,7 @@
 							<label class="control-label col-md-4" for="file">Select an Image: </label>
 							<div class="col-md-8">
 								<sf:input type="file" path="file" id="file" class="form-control"/> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
+								<sf:errors path="file" cssClass="help-block" element="em"/> <!-- wiadomosc pochadzaca z Hibernate Validator - zdefiniowana w Product.java - wyswietli sie gdy to pole formularza nie spelnia warunku walidacji -->
 							</div> <!-- form-control - to klasa Bootstrap -->
 						</div>
 						

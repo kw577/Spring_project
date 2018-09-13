@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kzn.onlineshopping.util.FileUploadUtility;
+import net.kzn.onlineshopping.validator.ProductValidator;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
@@ -65,6 +66,10 @@ public class ManagementController {
 	// dodawanie nowego produktu poprzez formularz administratora 
 	@RequestMapping(value = "/products", method = RequestMethod.POST) 
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, HttpServletRequest request) { // @ModelAttribute("product") - jak w manageProducts.jsp
+		
+		// sprawdzenie czy nastapily bledy przy uploadzie pliku
+		new ProductValidator().validate(mProduct, results);
+		
 		
 		// sprawdzenie czy wystapily jakies bledy przy walidacji - nastapi ponowne wczytanie formularza
 		if(results.hasErrors()) {
