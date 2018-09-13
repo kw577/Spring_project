@@ -145,4 +145,18 @@ $(function() {
 	// !!!!!!!!!!!!!!!!!!!!!!!
 	
 	
+	
+	
+	
+	// usuniecie okna z informacja o dodaniu nowego produktu (po 3 sekundach)
+	var $alert = $('.alert');
+	if($alert.length) {
+		setTimeout(function() {
+			$alert.fadeOut('slow');
+		}, 3000);
+	}
+	
+	
+	
+	
 });
