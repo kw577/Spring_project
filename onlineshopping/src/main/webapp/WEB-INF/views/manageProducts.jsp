@@ -44,6 +44,7 @@
 							
 								<sf:input type="text" path="name" id="name" placeholder="Product Name" class="form-control"/> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
 								<!-- path="name" - odpowiada nazwie atrybutu klasy Product.java -->
+								<sf:errors path="name" cssClass="help-block" element="em"/> <!-- wiadomosc pochadzaca z Hibernate Validator - zdefiniowana w Product.java - wyswietli sie gdy to pole formularza nie spelnia warunku walidacji -->
 							</div>
 						
 						</div>
@@ -54,6 +55,7 @@
 							
 								<sf:input type="text" path="brand" id="brand" placeholder="Brand Name" class="form-control"/> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
 								<!-- path="brand" - odpowiada nazwie atrybutu klasy Product.java -->
+								<sf:errors path="brand" cssClass="help-block" element="em"/> <!-- wiadomosc pochadzaca z Hibernate Validator - zdefiniowana w Product.java - wyswietli sie gdy to pole formularza nie spelnia warunku walidacji -->
 							</div>
 						
 						</div>
@@ -62,6 +64,7 @@
 							<div class="col-md-8">
 								<sf:textarea path="description" id="description" rows="4" placeholder="Write a desription for the product"  class="form-control"/> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->			
 								<!-- path="description" - odpowiada nazwie atrybutu klasy Product.java -->
+								<sf:errors path="description" cssClass="help-block" element="em"/> <!-- wiadomosc pochadzaca z Hibernate Validator - zdefiniowana w Product.java - wyswietli sie gdy to pole formularza nie spelnia warunku walidacji -->
 							</div>
 						</div>	
 											
@@ -69,6 +72,7 @@
 							<label class="control-label col-md-4" for="unitPrice">Enter Unit Price:</label>
 							<div class="col-md-8">
 								<sf:input type="number" path="unitPrice" id="unitPrice" placeholder="Unit Price In &#8364;" class="form-control"/> <!-- Placeholder - napisz w polu formularza wyswietlany zanim zacznie sie do niego cos wpisywac -->
+								<sf:errors path="unitPrice" cssClass="help-block" element="em"/> <!-- wiadomosc pochadzaca z Hibernate Validator - zdefiniowana w Product.java - wyswietli sie gdy to pole formularza nie spelnia warunku walidacji -->
 							</div>
 						</div>
 						

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,11 +22,17 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String code;
+	
+	@NotBlank(message = "Please enter the Product Name!") // Hibernate Validator - przy dodawaniu nowego produktu do bazy danych poprzez formularz administratora - pole name nie moze byc puste - jesli bedzie wyświetli sie podany komunikat
 	private String name;
+	
+	@NotBlank(message = "Please enter the Product Name!") // Hibernate Validator - przy dodawaniu nowego produktu do bazy danych poprzez formularz administratora - pole brand nie moze byc puste - jesli bedzie wyświetli sie podany komunikat
 	private String brand;
 	@JsonIgnore // pole decription bedzie pominiete przy generowaniu danych w formacie JSON
+	@NotBlank(message = "Please enter the description for Product!") // Hibernate Validator - to pole nie moze byc puste przy dodawaniu nowego produktu
 	private String description;
 	@Column(name = "unit_price")
+	@Min(value=1, message="The price cannot be less than 1") // Hibernate Validator - przy dodawaniu nowego produktu nalezy podac jego koszt wiekszy niz 1
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
