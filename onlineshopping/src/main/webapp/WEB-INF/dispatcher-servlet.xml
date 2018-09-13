@@ -26,6 +26,10 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 
+	<!-- Upload plikow z wykorzystaniem MultiPart - nie mozna wykorzystac innego id niz "multipartResolver" -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
 
 	<!-- Loading static resources - szablon projektu frontendu -->
 	<mvc:annotation-driven></mvc:annotation-driven>
