@@ -27,6 +27,15 @@ public class JsonDataController {
 	}
 	
 	
+	@RequestMapping("/admin/all/products")   
+	@ResponseBody 
+	public List<Product> getAllProductsForAdmin(){
+		
+		//admin dostaje liste wszystkich produktow - rowniez nieaktywnych
+		return productDAO.list();
+	}
+	
+	
 	@RequestMapping("/category/{id}/products")   
 	@ResponseBody // Spring stara sie przeksztalcic zwrocone wartosci w odpowiedz http (np. konwertujac obiekt na format JSON lub XML)
 	public List<Product> getProductsByCategory(@PathVariable int id){

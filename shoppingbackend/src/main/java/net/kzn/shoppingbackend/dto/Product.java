@@ -38,7 +38,6 @@ public class Product {
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
-	@JsonIgnore // pole active bedzie pominiete przy generowaniu danych w formacie JSON
 	private boolean active;
 	@Column(name = "category_id")
 	@JsonIgnore // pole categoryId bedzie pominiete przy generowaniu danych w formacie JSON

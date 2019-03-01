@@ -128,6 +128,9 @@
 		<!-- DataTable Bootstrap Script - jQuery - tabela do wyswietlania produktow - wazna jest kolejnosc linkowania tych plikow .js-->
 		<script src="${js}/dataTables.bootstrap.js"></script>
 
+		<!-- DBootbox - okno dialogowe -->
+		<script src="${js}/bootbox.min.js"></script>
+
 		<!-- Self coded javascript - Active menu - podswietlanie aktualnie wybranej opcji na pasku nawigacji -->
 		<script src="${js}/myapp.js"></script>
 

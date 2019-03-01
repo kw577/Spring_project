@@ -157,6 +157,65 @@ $(function() {
 	}
 	
 	
+	// -----------------
+	
+	// Aktywacja i dezaktywacja produktu przez administratora
+	// okno dialogowe ktore poajwia sie gdy admin nacisnie przelacznie dezaktywacji produktu
+	$('.switch input[type="checkbox"]').on('change' , function() {							
+					
+		var checkbox = $(this);
+		var checked = checkbox.prop('checked');
+		var dMsg = (checked)? 'You want to activate the product?':
+							  'You want to deactivate the product';
+		
+		
+		var value = checkbox.prop('value');
+		
+		// okno dialogowe z wykorzystaniem BootBox.js
+		bootbox.confirm({
+			size: 'medium',
+			title: 'Product Activation & Deactivation',
+			message: dMsg,
+			callback: function(confirmed){
+				
+				if(confirmed){
+					// po potwierdzeniu pojawia sie kolejne okno z informacja
+					console.log(value);
+					bootbox.alert({
+						size: 'medium',
+						title: 'Information',
+						message: 'You are going to perform operation on product' + value
+					});
+					
+				}
+				else{
+					checkbox.prop('checked', !checked);
+				}
+			}
+			
+		});
+		
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 });
