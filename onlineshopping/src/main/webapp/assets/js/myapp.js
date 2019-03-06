@@ -326,11 +326,22 @@ $(function() {
 										if(confirmed){
 											// po potwierdzeniu pojawia sie kolejne okno z informacja
 											console.log(value);
-											bootbox.alert({
-												size: 'medium',
-												title: 'Information',
-												message: 'You are going to perform operation on product' + value
-											});
+											
+											//update produktu w bazie danych z wykorzystaniem AJAX
+											var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
+											
+											$.post(activationUrl, function(data) {
+												bootbox.alert({
+													size: 'medium',
+													title: 'Information',
+													message: data
+												});
+											})
+											
+											
+											//------------------------------------
+											
+
 											
 										}
 										else{
