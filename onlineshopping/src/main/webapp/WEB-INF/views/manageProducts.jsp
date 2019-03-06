@@ -155,6 +155,7 @@
 								<th>Id</th>
 								<th>&#160</th> 
 								<th>Name</th>
+								<th>Brand</th>
 								<th>Quantity</th>
 								<th>Unit Price</th>
 								<th>Active</th>
@@ -164,57 +165,7 @@
 						
 						</thead>
 					
-					
-						<tbody>
-						
-							<tr>
-								<td>4</td>
-								<td>
-										<img class="adminDataTableImg" src="${contextRoot}/resources/images/PRDMNO123PQRX.jpg"
-										alt="MacBook Pro"/>
-								</td>
-								<td>MacBook Pro</td>
-								<td>3</td>
-								<td>&#8377; 54000.00</td>
-								<td>
-									<!-- Przelacznik dla produktu: aktywny <-> nieaktywny -->
-									<label class="switch">
-										<input type="checkbox" checked="checked" value="4"/>
-										<div class="slider"></div>
-									</label>
-								</td>
-								<td>
-									<!-- Link do strony edycji produktu -->
-									<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-							</tr>
-														<tr>
-								<td>4</td>
-								<td>
-										<img class="adminDataTableImg" src="${contextRoot}/resources/images/PRDMNO123PQRX.jpg"
-										alt="MacBook Pro"/>
-								</td>
-								<td>MacBook Pro</td>
-								<td>3</td>
-								<td>&#8377; 54000.00</td>
-								<td>
-									<!-- Przelacznik dla produktu: aktywny <-> nieaktywny -->
-									<label class="switch">
-										<input type="checkbox" value="4"/>
-										<div class="slider"></div>
-									</label>
-								</td>
-								<td>
-									<!-- Link do strony edycji produktu -->
-									<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					
+				
 
 						<tfoot>
 						
@@ -222,6 +173,7 @@
 								<th>Id</th>
 								<th>&#160</th> 
 								<th>Name</th>
+								<th>Brand</th>
 								<th>Quantity</th>
 								<th>Unit Price</th>
 								<th>Active</th>

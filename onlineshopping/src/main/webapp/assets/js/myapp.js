@@ -200,6 +200,157 @@ $(function() {
 	
 	
 	
+	//---------------------------
+	// data table for admin - na podstawie wczesniejszej tabeli dla uzytkownikow sklepu - z wykorzystaniem dataTable.js
+	//---------------------------
+	
+	var $adminProductstable = $('#adminProductsTable'); // adminProductsTable  - id tabeli zdefiniowanej w manageProducts.jsp
+	
+	// kod ponizej jest wykonywany gdy tabela o id productListTable (plik listProducts.jsp) nie jest pusta
+	if($adminProductstable.length) { 
+		
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
+		
+		
+		
+		// formatowanie tablei wyswietlajacej produkty
+		$adminProductstable.DataTable( { // zmienna zdefiniowana w jquery.dataTables.js
+			// ustawienie parametrow tabeli
+			lengthMenu: [[10,30,50,-1], ['10 Records', '30 Records', '50 Records', 'ALL']], // zmienna zdefiniowana w jquery.dataTables.js - zmienna okresla - lista rozwijana z iloscia produktow jakie ma wyswietlac tabela
+			pageLength: 30, // zmienna zdefiniowana w jquery.dataTables.js
+			//data: products // do celow testowych - zrodlo danych - tabela products zdefiniowana powyzej - zmienna zdefiniowana w jquery.dataTables.js
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			columns: [
+						{
+							data: 'id'
+						},
+						{
+			        	  data: 'code',
+			        	  bSortable: false,
+			        	  mRender: function(data, type, row) {
+			        		  
+			        		  return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="adminDataTableImg"/>';
+			        		  
+			        	}
+		          		},
+						{
+							data: 'name' // odpowiada nazwie atrybutow w zwracanym pliku json (bedzie wiec rowniez odpowiadac nazwie atrybutow klasy Product)
+						},
+						{
+							data: 'brand'
+						},
+						{
+				        	  data: 'quantity',
+				        	  mRender: function(data, type, row) {
+					        		
+				        		  if(data < 1) { // jesli ilosc szt. danego produktu jest < 1 pojawi sie dodatkowy komunikat na czerwono
+				        			  return '<span style="color:red">Out of Stock!</span>';
+				        		  }
+				        		  
+				        		  return data;
+				        	  }
+				        },
+						{
+							data: 'unitPrice',
+							mRender: function(data, type, row) {
+				        		  return '&#8364; ' + data //'&#8364; ' HTML ENTITY CODE  - generuje nietypowy znak - symbol waluty
+				        	}
+						},
+				        {
+				        	  data: 'active',
+				        	  bSortable: false,
+				        	  mRender: function(data, type, row){
+				        		  var str = '';
+				        		
+				        		  
+				        		//renderowanie przelacznika aktywny - nieaktywny 
+								str += '<label class="switch">'
+									
+								if(data){
+									str += '<input type="checkbox" checked="checked" value="'+row.id+'"/>'
+								}
+								else{
+									str += '<input type="checkbox" value="'+row.id+'"/>'
+								}
+									
+								str += '<div class="slider"></div></label>'
+									
+									return str;
+								
+				        	  }
+				        	  
+				          },
+				          {
+				        	  data: 'id',
+				        	  bSortable: false,
+				        	  mRender: function(data, type, row){
+				        		 
+				        		  var str = '';
+				        		  // przycisk przenoszacy do strony edycji produktu
+				  				str += '<a href="${contextRoot}/manage/'+data+'/product" class="btn btn-warning">';
+								str += '<span class="glyphicon glyphicon-pencil"></span></a>'
+							
+				        		return str;
+				        		  
+				        	  }
+				          }
+						
+						],
+						
+						initComplete: function() {
+							var api = this.api();
+							
+							
+							// Aktywacja i dezaktywacja produktu przez administratora 
+							// okno dialogowe ktore poajwia sie gdy admin nacisnie przelacznie dezaktywacji produktu
+							api.$('.switch input[type="checkbox"]').on('change' , function() {							
+											
+								var checkbox = $(this);
+								var checked = checkbox.prop('checked');
+								var dMsg = (checked)? 'You want to activate the product?':
+													  'You want to deactivate the product';
+								
+								
+								var value = checkbox.prop('value');
+								
+								// okno dialogowe z wykorzystaniem BootBox.js
+								bootbox.confirm({
+									size: 'medium',
+									title: 'Product Activation & Deactivation',
+									message: dMsg,
+									callback: function(confirmed){
+										
+										if(confirmed){
+											// po potwierdzeniu pojawia sie kolejne okno z informacja
+											console.log(value);
+											bootbox.alert({
+												size: 'medium',
+												title: 'Information',
+												message: 'You are going to perform operation on product' + value
+											});
+											
+										}
+										else{
+											checkbox.prop('checked', !checked);
+										}
+									}
+									
+								});
+								
+								
+							});
+						}
+			
+			 
+			
+			
+		});
+		
+		
+	}
 	
 	
 	
@@ -213,8 +364,7 @@ $(function() {
 	
 	
 	
-	
-	
+	//-----------------------
 	
 	
 	
