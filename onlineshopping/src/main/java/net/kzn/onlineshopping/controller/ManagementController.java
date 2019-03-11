@@ -65,12 +65,40 @@ public class ManagementController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	public ModelAndView showEditProduct(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("page");
+		
+		mv.addObject("userClickManageProducts", true); 
+		mv.addObject("title", "Manage Products");
+		
+		
+		//Pobranie producktu z bazy danych
+		Product nProduct = productDAO.get(id);
+		
+		
+		mv.addObject("product", nProduct);
+			
+		
+		return mv;
+	}
+	
+	
+	
 	// dodawanie nowego produktu poprzez formularz administratora 
 	@RequestMapping(value = "/products", method = RequestMethod.POST) 
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, HttpServletRequest request) { // @ModelAttribute("product") - jak w manageProducts.jsp
 		
-		// sprawdzenie czy nastapily bledy przy uploadzie pliku
-		new ProductValidator().validate(mProduct, results);
+		// sprawdzenie czy zostaly poprawnie uzupelnione wszystkie pola - tylko dla nowo dodawanego produktu - taki produkt ma wyjsiowo id = 0
+		if(mProduct.getId() == 0) {
+			new ProductValidator().validate(mProduct, results);
+		}
+		else {
+			if(!mProduct.getFile().getOriginalFilename().equals("")) {
+				new ProductValidator().validate(mProduct, results);
+			}
+		}
 		
 		
 		// sprawdzenie czy wystapily jakies bledy przy walidacji - nastapi ponowne wczytanie formularza
@@ -85,8 +113,14 @@ public class ManagementController {
 		// wydruk informacji w konsoli
 		logger.info(mProduct.toString());
 		
-		// create a new product record
-		productDAO.add(mProduct);
+		// create a new product record or update a product (na podstawie wartosci id - wyjsciowa wartosc id dla nowego produktu wynosi 0 - nastepnie wartosc ta jest inkrementowana w bazie danych)
+		if(mProduct.getId() == 0) {
+			productDAO.add(mProduct);
+		}
+		else {
+			productDAO.update(mProduct);
+		}
+		
 		
 		if(!mProduct.getFile().getOriginalFilename().equals("")) {
 			
