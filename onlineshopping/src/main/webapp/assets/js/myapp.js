@@ -366,17 +366,49 @@ $(function() {
 	
 	
 	
+	//-----------------------
+	// jquery validator - walidacja dodawania nowej kategorii
+	$categoryForm = $('#categoryForm'); // categoryForm to id przypisane do formularza Spring w manageProducts.jsp
 	
-	
-	
-	
-	
-	
-	
-	
+	if($categoryForm.length) {//jesli faormularz jest niepusty
+		
+		$categoryForm.validate({			
+				rules: {
+					name: {//pole o id name w formularzu
+						required: true,
+						minlength: 3
+					},
+					description: { //pole o id desription w formularzu
+						required: true,
+						minlength: 3					
+					}				
+				},
+				messages: {					
+					name: {
+						required: 'Please add the category name!',
+						minlength: 'The category name should not be less than 3 characters'
+					},
+					description: {
+						required: 'Please enter category name!',
+						minlength: 'Please enter atleast 3 characters'
+					}					
+				},
+				errorElement : "em",
+				errorPlacement : function(error, element) {
+					
+					error.addClass('help-block');
+					
+					//informacja o bledzie dodana pod polem ktorego ten blad dotyczy
+					error.insertAfter(element);
+					
+					//errorPlacement(error, element);
+				}				
+			}
+		
+		);
+		
+	}
 	
 	//-----------------------
-	
-	
 	
 });

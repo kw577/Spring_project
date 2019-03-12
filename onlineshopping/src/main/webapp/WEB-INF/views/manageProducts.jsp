@@ -160,7 +160,7 @@
 					</div>
 					<div class="modal-body">
 						<!-- Formularz dodawnia kategorii - spring form -->
-						<sf:form modelAttribute="category" action="${contextRoot}/manage/category" method="POST" class="form-horizontal">
+						<sf:form id="categoryForm" modelAttribute="category" action="${contextRoot}/manage/category" method="POST" class="form-horizontal">
 						
 						
 							<div class="form-group">
