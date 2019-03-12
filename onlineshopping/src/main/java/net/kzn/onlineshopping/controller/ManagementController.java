@@ -59,6 +59,9 @@ public class ManagementController {
 			if(operation.equals("product")) {
 				mv.addObject("message", "Product Submitted Successfully!");
 			}
+			else if(operation.equals("category")) {
+				mv.addObject("message", "Category Submitted Successfully!");
+			}
 		}
 		
 		
@@ -152,11 +155,30 @@ public class ManagementController {
 	}
 	
 	
-	// zwraca kategorie dla wszystkich mapowan typu http://localhost:8080/onlineshopping/manage/...
+	// do Spring Form - zwraca kategorie dla wszystkich mapowan typu http://localhost:8080/onlineshopping/manage/...
 	@ModelAttribute("categories")
 	public List<Category> getCategories(){
 		
 		return categoryDAO.list();
+	}
+	
+	//uzywana do Spring Form - formularza administratora dodawania nowej kategorii - w pliku manageProducts.jsp - rowniez wystempuje tam modelAttribute="category"
+	@ModelAttribute("category")
+	public Category getCategory() {
+		
+		//zwraca nowo utworzony obiekt typu Category do dodania do listy dostepnych kategorii
+		return new Category();
+	}
+	
+	//dodanie nowej kategorii - formularza administratora dodawania nowej kategorii - w pliku manageProducts.jsp
+	@RequestMapping(value="/category", method=RequestMethod.POST)
+	public String handleCategorySubmission(@ModelAttribute Category category) { // w formularzu administratora w pliku manageProducts.jsp - rowniez wystempuje modelAttribute="category"
+		
+		categoryDAO.add(category);
+		
+		//przekierowanie
+		return "redirect:/manage/products/?operation=category"; // to powoduje kolejne mapowanie - funkcja showManageProducts() w ManagementController.java - i dopiero tam decyduje sie o wlasciwym przekierowaniu
+		
 	}
 	
 	
