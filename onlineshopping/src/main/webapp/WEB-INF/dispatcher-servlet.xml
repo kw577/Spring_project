@@ -62,6 +62,7 @@
 	
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="order" value="-1"/> <!-- Jesli wystepuje takie samo mapowanie w klasach typu controller - (tu PageController.java) - ustalame w ten sposob pierwszenstwo dla spring-webflow -->
 	</bean>	
 	
 	

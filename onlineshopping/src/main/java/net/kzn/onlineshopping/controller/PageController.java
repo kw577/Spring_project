@@ -176,6 +176,18 @@ public class PageController {
 	}
 	
 	
+	// TEST - przypadek gdy takie samo mapowanie jest dla spring-webflow co dla PageController - nalezy ustawic w dispatcher-servlet - <property name="order" value="-1"/>   ustalajaca priorytet mapowania
+	@RequestMapping(value = { "/register" }) 
+	public ModelAndView register() {
+
+		ModelAndView mv = new ModelAndView("page");
+	
+		mv.addObject("title", "All Products");
+		
+		return mv;
+
+	}
+	
 	
 	
 }
