@@ -1,11 +1,13 @@
 package net.kzn.shoppingbackend.dto;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,6 +30,9 @@ public class User {
 	private String password;
 	private boolean enabled = true;
 
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)  //user - nazwa atrybutu w klasie Cart.java ktory zjest zmapowany z klasa User.java
+	private Cart cart;
+	
 
 	public int getId() {
 		return id;
@@ -77,7 +82,13 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
+		
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email

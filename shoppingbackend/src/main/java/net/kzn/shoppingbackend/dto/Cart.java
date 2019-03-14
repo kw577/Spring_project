@@ -1,12 +1,11 @@
 package net.kzn.shoppingbackend.dto;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,8 +15,15 @@ public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
-	@Column(name = "user_id")
-	private int userId;
+
+	//-----------------
+	
+	@OneToOne
+	private User user;
+	
+	//-----------------
+	
+	
 	@Column(name = "grand_total")
 	private double grandTotal;
 	@Column(name = "cart_lines")
@@ -47,13 +53,14 @@ public class Cart {
 		this.cartLines = cartLines;
 	}
 
+
 	
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
