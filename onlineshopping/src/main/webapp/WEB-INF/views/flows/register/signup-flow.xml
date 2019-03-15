@@ -3,13 +3,30 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+              
+     <!-- Instancja klasy wykorzystywanej w spring-webflow -->
+     <var name="user" class="net.kzn.shoppingbackend.dto.User"/>
+     <var name="billing" class="net.kzn.shoppingbackend.dto.Address"/>         
                           
-      <!-- Start state -->
-      <view-state id="personal" view="flows/register/signup-personal"></view-state>                 
+      <!-- Start state - z tego kroku nastepuje przejscie do stanu billing  (to="billing")  -->
+      <view-state id="personal" view="flows/register/signup-personal" model="user">
+      		<transition on="billing" to="billing"></transition>
+      </view-state>                 
             
+      <view-state id="billing" view="flows/register/signup-billing" model="billing">
+      		<transition on="personal" to="personal"></transition>
+      		<transition on="confirm" to="confirm"></transition>
+      </view-state>       
+            
+      <view-state id="confirm" view="flows/register/signup-confirm">
+      		<transition on="personal" to="personal"></transition>
+      		<transition on="billing" to="billing"></transition>
+      		<transition on="success" to="success"></transition>
+      </view-state> 
             
       <!-- End state -->
-      <end-state id="home" view="externalRedirect:contextRelative:/"/>        
+      <end-state id="home" view="externalRedirect:contextRelative:/"/>
+      <end-state id="success" view="flows/register/signup-success"/>        
                     
       <!-- Global Transition -->
       <!-- PRzejscia stanow -->
