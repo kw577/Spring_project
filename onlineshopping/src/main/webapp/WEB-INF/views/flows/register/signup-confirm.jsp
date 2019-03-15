@@ -12,8 +12,15 @@
 				</div>
 			
 				<div class="panel-body">
+				<!-- Wyswietla podane we wczesniejszych krokach dane uzytkownika ${registerModel} - zdefiniowany w signup-flow.xml -->
 					<div class="text-center">
-						<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
+						<h3>Name : <strong>${registerModel.user.firstName} ${registerModel.user.lastName}</strong></h3>
+						<h4>Email : <strong>${registerModel.user.email}</strong></h4>
+						<h4>Contact : <strong>${registerModel.user.contactNumber}</strong></h4>
+						<h4>Role : <strong>${registerModel.user.role}</strong></h4>
+						<p>
+							<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
+						</p>
 					</div>
 				</div>
 			
@@ -32,7 +39,14 @@
 			
 				<div class="panel-body">
 					<div class="text-center">
-						<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">Edit</a>
+						<p>${registerModel.billing.addressLineOne}, </p>
+						<p>${registerModel.billing.addressLineTwo}, </p>
+						<p>${registerModel.billing.city} -  ${registerModel.billing.postalCode}, </p>
+						<p>${registerModel.billing.state}</p>
+						<p>${registerModel.billing.country}</p>
+						<p>
+							<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">Edit</a>
+						</p>
 					</div>
 				</div>
 			
