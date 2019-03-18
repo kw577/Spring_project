@@ -27,6 +27,7 @@
 								<div class="col-md-8">
 									<sf:input type="text" path="firstName" class="form-control"
 										placeholder="First Name" />
+									<sf:errors path="firstName" cssClass="help-block" element="em"/> 
 								</div>
 							</div>
 

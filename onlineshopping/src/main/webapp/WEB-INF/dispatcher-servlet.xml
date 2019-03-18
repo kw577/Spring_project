@@ -49,8 +49,11 @@
 		<wf:flow-location-pattern value="/**/*-flow.xml"/>		
 	</wf:flow-registry>
 
+
+	<!-- validator - bean zdefiniowany ponizej -->
 	<wf:flow-builder-services id="flowBuilderServices"
     	view-factory-creator="viewFactoryCreator"
+    	validator="validator"
    	/>
    	
    	
