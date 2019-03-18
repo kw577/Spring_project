@@ -13,13 +13,22 @@
 		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"/>
 	</on-start>
                           
-      <!-- Start state - z tego kroku nastepuje przejscie do stanu billing  (to="billing")  -->
+      <!-- Start state - z tego kroku nastepuje przejscie do validate (walidacja pierwszego kroku rejestracji)  -->
       <view-state id="personal" view="flows/register/signup-personal" model="user">
-      		<transition on="billing" to="billing"></transition>
+      		<transition on="billing" to="validate"></transition>
       	<on-exit>
 			<evaluate expression="registerHandler.addUser(flowScope.registerModel, user)" />			
 		</on-exit>
       </view-state>                 
+            
+            
+	    <!-- custom validation - dla pierwszego etapu walidacji - danych uzytkownika - jesli walidacja jest ok - nastapi przejscie do kolejnego etapu walidacji -->
+		<action-state id="validate">
+			<evaluate expression="registerHandler.validateUser(user, messageContext)" />
+			<transition on="success" to="billing"/>
+			<transition on="failure" to="personal"/>
+		</action-state>
+            
             
       <view-state id="billing" view="flows/register/signup-billing" model="billing">
       		<transition on="personal" to="personal"></transition>

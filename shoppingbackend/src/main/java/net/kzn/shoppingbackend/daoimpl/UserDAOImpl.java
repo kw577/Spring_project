@@ -3,7 +3,6 @@ package net.kzn.shoppingbackend.daoimpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,9 +55,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User getByEmail(Email email) {
+	public User getByEmail(String email) {
 		
-		String selectQuery = "FROM User WHERE email = email";
+		String selectQuery = "FROM User WHERE email = :email";
 		
 		try {
 			return sessionFactory.getCurrentSession()
@@ -67,9 +66,11 @@ public class UserDAOImpl implements UserDAO {
 					.getSingleResult();
 		}
 		catch (Exception ex) {
+			System.out.println("\n\n\n\nBrak wynikow!!!");
 			ex.printStackTrace();
 			return null;
 		}
+		
 		
 		
 	}

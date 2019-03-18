@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -54,7 +55,21 @@ public class User implements Serializable {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)  //user - nazwa atrybutu w klasie Cart.java ktory zjest zmapowany z klasa User.java
 	private Cart cart;
 	
-
+	
+	@Transient //oznacza atrybut, ktory nie jest przechowywany w bazie danych
+	private String confirmPassword;
+	
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
+	//----------------------------
+	
+	
 	public int getId() {
 		return id;
 	}
