@@ -28,7 +28,7 @@ public class HibernateConfig {
 	
 	// Polaczenie z baza danych
 	// dataSource bean will be available
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource() {
 		
 		BasicDataSource dataSource = new BasicDataSource();
