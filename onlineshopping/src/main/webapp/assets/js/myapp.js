@@ -411,4 +411,50 @@ $(function() {
 	
 	//-----------------------
 	
+	
+	
+	//-----------------------
+	// jquery validator - walidacja formularza logowania
+	$loginForm = $('#loginForm'); // loginForm to id przypisane do formularza Spring w manageProducts.jsp
+	
+	if($loginForm.length) {//jesli faormularz jest niepusty
+		
+		$loginForm.validate({			
+				rules: {
+					username: {//pole o id name w formularzu
+						required: true,
+						email: true
+					},
+					password: { //pole o id desription w formularzu
+						required: true				
+					}				
+				},
+				messages: {					
+					username: {
+						required: 'Please enter the username!',
+						email: 'Please enter valid email address!'
+					},
+					description: {
+						required: 'Please enter the password!',
+					}					
+				},
+				errorElement : "em",
+				errorPlacement : function(error, element) {
+					
+					error.addClass('help-block');
+					
+					//informacja o bledzie dodana pod polem ktorego ten blad dotyczy
+					error.insertAfter(element);
+					
+					//errorPlacement(error, element);
+				}				
+			}
+		
+		);
+		
+	}
+	
+	//-----------------------
+	
+	
 });

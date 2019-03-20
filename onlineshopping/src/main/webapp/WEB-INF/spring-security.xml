@@ -11,10 +11,16 @@
 
 	<context:component-scan base-package="net.kzn.shoppingbackend"/>
 
-
+	<!-- Nalezy dodac ta linijka aby zawsze byl zapewniony dostep do pliku z folderu resources (bez uwgledu na uprawnienia uzytkownika) - np dostep do plkow   .js   .css     -->
+	<http pattern="/resources/**" security="none"/>
+	
+	<!-- Do stron z mapowaniem onlineshopping/login  - maja dostep wszyscy, do reszty mapowan - jedynie uzytkownicy z uprawnieniami USER . UWAGA - wazna jest kolejnosc zapisow <intercept-url> permitAll powinny byc zapisane jako pierwsze -->
+	<!-- Rozwiazaniem wyjatku csrf moze byc wylaczenie ochrony csrf  - ni jest to rozwiazanie zalecane   - jednak aby tak zrobic wystarczy w sekcji <http> dodac  		<csrf disabled="true"/>  -->
+	<!-- w <form-login> mozna zdefiniowac na jaki adres nastapi przekierowanie przy nieudanym logowaniu (np zle dane uzytkownika) domyslnie jest to {contextRoot}/login?error     (zmiana za pomoca parametru  authentication-failure-url="/nazwaAdresu" -->
 	<http>
+		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/**" access="hasAuthority('USER')" />
-		<form-login />
+		<form-login login-page="/login" />
 		<logout />
 	</http>
 	
