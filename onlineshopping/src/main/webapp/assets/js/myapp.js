@@ -23,7 +23,19 @@ $(function() {
 			break;	
 	
 	}
-		
+	
+	//csrf token - aby mozliwe byly requesty za pomoca AJAX'a przy wlaczonej ochronie CSRF
+	var token = $('meta[name="_csrf"]').attr('content');// pobiera wartosc z page.jsp  (content)  - token csrf
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if((token!=undefined && header !=undefined) && (token.length > 0 && header.length > 0)) {		
+		// set the token header for the ajax request
+		$(document).ajaxSend(function(e, xhr, options) {			
+			xhr.setRequestHeader(header,token);			
+		});				
+	}
+	
+	
 	// ten skrypt jest uruchamiany w page.jsp - ktory zawiera odniesienia do plikow navbar.jsp, sidebar.jsp - a w tych plikach jes zdefiniowany elementy o id #about, #contact itd.
 	
 	// !!!!!!!!!!!!!!!!!!!!!!!

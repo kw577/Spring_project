@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kzn.onlineshopping.exception.ProductNotFoundException;
@@ -190,10 +191,21 @@ public class PageController {
 	
 	
 	// strona logowania
+	// mapowanie to obsluguje zarowno adres dla strony logowania jak i przekierowanie po wystapieniu bledu logowania - czyli adresy http://localhost:8080/onlineshopping/login  i  http://localhost:8080/onlineshopping/login?error   gdyz RequestParam nie jest wymagany -    required = false 
+	// domyslnie adres przekierowania przy bledzie logowania to http://localhost:8080/onlineshopping/login?error i mozna go zmienic w pliku spring-security.xml w sekcji <http></http>
 	@RequestMapping(value = { "/login" })
-	public ModelAndView login() {
+	public ModelAndView login(@RequestParam(name="error", required=false)String error) {
 
 		ModelAndView mv = new ModelAndView("login");
+		
+		// spr czy mapowanie dotyczy strony logowania czy przekierowania po blednym logowaniu
+		if(error!=null) {
+			mv.addObject("message", "Invalid Username and Password!");
+			
+		}
+		
+		
+		
 		mv.addObject("title", "Login");
 	
 		return mv;

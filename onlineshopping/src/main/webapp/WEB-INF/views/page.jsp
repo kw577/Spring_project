@@ -26,6 +26,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
+<!-- CSRF exception handling in AJAX requests -->
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
+
 <!--  zmienna title w pliku PageController.java  -->
 <title>Online Shopping - ${title}</title>
 

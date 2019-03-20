@@ -59,6 +59,19 @@
 		<div class="content">
 			<div class="container">
 			    
+			    
+			    <!-- Wyswietla informacje o bledzie logowania  (gdy obiekt message dodawnany w PageController nie jest pusty) -->
+			    <c:if test="${not empty message}">
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="alert alert-danger">${message}</div>
+						</div>
+					</div>
+				</c:if>
+			    
+			    
+			    
+			    
 			    <div class="row">
 			     
 			     <div class="col-md-offset-3 col-md-6">
