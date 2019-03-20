@@ -10,6 +10,11 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<context:component-scan base-package="net.kzn.shoppingbackend"/>
+	
+	<!-- Uwaga - dla zapisanych kont uzytkownikow przyjeto haslo pass1  a dla admina haslo pass2 -->
+	<!-- np.:  piotr@email.com pass1   	kuba@email.com pass2  (admin)     -->
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
 
 	<!-- Nalezy dodac ta linijka aby zawsze byl zapewniony dostep do pliku z folderu resources (bez uwgledu na uprawnienia uzytkownika) - np dostep do plkow   .js   .css     -->
 	<http pattern="/resources/**" security="none"/>
@@ -35,8 +40,10 @@
 	
 	
 	<!-- dataSource - to bean zdefiniowany w HibernateConfig.java -->
+	<!-- <password-encoder ref="passwordEncoder" />   - passwordEncoder zdefiniowany bean w pliku spring-security.xml -->
 	<authentication-manager>
 		<authentication-provider>
+			<password-encoder ref="passwordEncoder"/>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select email, password, enabled from user_detail where email = ?"
  				authorities-by-username-query="select email, role from user_detail where email = ?"	
