@@ -66,8 +66,8 @@ public class UserDAOImpl implements UserDAO {
 					.getSingleResult();
 		}
 		catch (Exception ex) {
-			System.out.println("\n\n\n\nBrak wynikow!!!");
-			ex.printStackTrace();
+			//System.out.println("\n\n\n\nBrak wynikow!!!");
+			//ex.printStackTrace();
 			return null;
 		}
 		

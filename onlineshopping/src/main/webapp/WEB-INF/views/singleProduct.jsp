@@ -1,3 +1,4 @@
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <div class="container">
 
 	<!-- Breadcrumb -->
@@ -48,6 +49,7 @@
 			<hr/>	
 					
 			<!-- c:choose - funkcja z biblioteki jstl - jesli ilosc dostepnych szt. danego produktu < 1 wyswitetli sie dodatkowy komunikat-->
+			
 			<c:choose>
 				<c:when test="${product.quantity < 1}">
 					<h6>Qty. Available: <span style="color:red">Out of Stock!</span></h6>
@@ -59,6 +61,7 @@
 					
 					
 			<!-- Przycisk dodawania produktu od koszyka bedzie aktywny gdy ilosc szt. danego produtu jest > 0 -->		
+			<security:authorize access="hasAuthority('USER')">
 			<c:choose>
 				<c:when test="${product.quantity < 1}">
 					<!-- Przycisk dodania produktu do koszyka - nieaktywny - link href jest nieaktywny - strike - oznacza przekreslony tekst -->
@@ -71,8 +74,13 @@
 					<span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
 				</c:otherwise>
 			</c:choose>	
+			</security:authorize>		
 					
-					
+			<security:authorize access="hasAuthority('ADMIN')">
+					<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning">
+					<span class="glyphicon glyphicon-pencil"></span>Edit</a>
+			
+			</security:authorize>	
 			
 			<!-- Przycisk powrotu do widoku wszystkich produktow - poprzez dopowiedni link -->
 			<a href="${contextRoot}/show/all/products" class="btn btn-primary">

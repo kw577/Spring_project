@@ -1,0 +1,3 @@
+Uwaga - dla zapisanych kont uzytkownikow przyjeto haslo pass1  a dla admina haslo pass2
+
+np.:  piotr@email.com pass1   	kuba@email.com pass2  (admin) 
