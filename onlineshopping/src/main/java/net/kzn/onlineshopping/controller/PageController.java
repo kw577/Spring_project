@@ -1,8 +1,14 @@
 package net.kzn.onlineshopping.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -194,7 +200,9 @@ public class PageController {
 	// mapowanie to obsluguje zarowno adres dla strony logowania jak i przekierowanie po wystapieniu bledu logowania - czyli adresy http://localhost:8080/onlineshopping/login  i  http://localhost:8080/onlineshopping/login?error   gdyz RequestParam nie jest wymagany -    required = false 
 	// domyslnie adres przekierowania przy bledzie logowania to http://localhost:8080/onlineshopping/login?error i mozna go zmienic w pliku spring-security.xml w sekcji <http></http>
 	@RequestMapping(value = { "/login" })
-	public ModelAndView login(@RequestParam(name="error", required=false)String error) {
+	public ModelAndView login(@RequestParam(name="error", required=false)String error,
+			@RequestParam(name="logout", required=false)String logout
+			) {
 
 		ModelAndView mv = new ModelAndView("login");
 		
@@ -204,7 +212,10 @@ public class PageController {
 			
 		}
 		
-		
+		if(logout!=null) {
+			mv.addObject("logout", "User has successfully logged out!");
+			
+		}
 		
 		mv.addObject("title", "Login");
 	
@@ -212,6 +223,19 @@ public class PageController {
 
 	}
 	
+	
+	
+	@RequestMapping(value="/perform-logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		// Invalidates HTTP Session, then unbinds any objects bound to it.
+	    // Removes the authentication from securitycontext 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+		
+		return "redirect:/login?logout";
+	}	
 	
 	
 	// access denied page

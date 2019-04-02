@@ -35,7 +35,6 @@
 		<!-- przy odmowie dostepu nastepuje przekierowanie na te strone - mapowanie w PageController -->
 		<access-denied-handler error-page="/access-denied"/>
 		
-		<logout />
 	</http>
 	
 	
